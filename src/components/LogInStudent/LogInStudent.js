@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import axios from "axios"; // ייבוא axios כאן
 import "./LogInStudent.css";
 
 const LogInStudent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
-  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
+
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -18,15 +19,23 @@ const LogInStudent = () => {
     setGithubUsername(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch(
-      `https://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login?username=${username}&password=${password}&gitgubUsername=${githubUsername}`
-    )
-      .then((res) => res.text())
-      .then((data) => {
-        console.log(data);
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // עצור את רענון הדף האוטומטי בשליחת טופס
+    try {
+      const response = await axios.get(
+        "http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login",
+        {
+          params: {
+            username: username,
+            password: password,
+            gitgubUsername: githubUsername,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -52,10 +61,10 @@ const LogInStudent = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="gitgubUsername">GitHub Username</label>
+          <label htmlFor="githubUsername">GitHub Username</label>
           <input
             type="text"
-            id="gitgubUsername"
+            id="githubUsername"
             value={githubUsername}
             onChange={handleGithubUsernameChange}
           />
