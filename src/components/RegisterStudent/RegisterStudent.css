@@ -1,0 +1,66 @@
+.RegisterStudent-login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background: white;
+  }
+  
+  .RegisterStudent-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .RegisterStudent-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .RegisterStudent-form-group input[type="text"],
+  .RegisterStudent-form-group input[type="password"],
+  .RegisterStudent-form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Prevents padding from expanding the box */
+  }
+  
+  .RegisterStudent-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  
+  .RegisterStudent-button:hover {
+    background: #0056b3;
+  }
+  
+  @media (max-width: 600px) {
+    .RegisterStudent-login-container {
+      width: 90%;
+      margin: auto;
+      padding: 1rem;
+    }
+  
+    /* Adjust the font-size for smaller screens */
+    .RegisterStudent-h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* More specific media query breakpoints can be added as needed */
+  @media (max-width: 480px) {
+    .RegisterStudent-form-group label,
+    .RegisterStudent-form-group input,
+    .RegisterStudent-form-group select,
+    .RegisterStudent-button {
+      font-size: 0.9rem; /* Slightly smaller text on very small screens */
+    }
+  }
+  

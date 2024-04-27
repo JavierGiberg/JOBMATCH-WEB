@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./LogInStudent.css";
+import "./RegisterStudent.css";
 
-const LogInStudent = () => {
+const RegisterStudent = () => {
   const [academiclist, setAcademiclist] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -35,10 +35,15 @@ const LogInStudent = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Student Register To Jobmatch</h2>
+    <div className="RegisterStudent-login-container">
+      <h1> Register </h1>
+      <h4>
+        יש לשים לב לנתונים הנבחרים כדי להשלים את התהליך. התהליך הינו אוטומטי
+        וסיסמת של הלימוד אינו נשמר במערכת. בלחיצה על כפתור החיבור אתה מאשר את
+        תנאי השימוש באתר
+      </h4>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="RegisterStudent-form-group">
           <label htmlFor="academic">chose Academic</label>
           <select
             id="academic"
@@ -48,7 +53,7 @@ const LogInStudent = () => {
             <Chose />
           </select>
         </div>
-        <div className="form-group">
+        <div className="RegisterStudent-form-group">
           <label htmlFor="username">Username of Academic</label>
           <input
             type="text"
@@ -57,7 +62,7 @@ const LogInStudent = () => {
             onChange={handleUsernameChange}
           />
         </div>
-        <div className="form-group">
+        <div className="RegisterStudent-form-group">
           <label htmlFor="password">Password Academic </label>
           <input
             type="password"
@@ -66,7 +71,7 @@ const LogInStudent = () => {
             onChange={handlePasswordChange}
           />
         </div>
-        <div className="form-group">
+        <div className="RegisterStudent-form-group">
           <label htmlFor="gitgubUsername">GitHub Username</label>
           <input
             type="text"
@@ -75,7 +80,9 @@ const LogInStudent = () => {
             onChange={handleGithubUsernameChange}
           />
         </div>
-        <button type="submit">Register</button>
+        <button className="RegisterStudent-button" type="submit">
+          Register
+        </button>
       </form>
     </div>
   );
@@ -83,9 +90,6 @@ const LogInStudent = () => {
 
 function Chose() {
   const list = [
-    {
-      collection: "Choose your Academic",
-    },
     {
       collection: "Ben Gurion University",
     },
@@ -108,4 +112,4 @@ function Chose() {
     </option>
   ));
 }
-export default LogInStudent;
+export default RegisterStudent;
