@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import axios from "axios"; // ייבוא axios כאן
 import "./LogInStudent.css";
 
 const LogInStudent = () => {
+  const [academiclist, setAcademiclist] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
 
+  const handleAcademiclistChange = (e) => {
+    setAcademiclist(e.target.value);
+  };
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -19,48 +22,34 @@ const LogInStudent = () => {
     setGithubUsername(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
+    debugger;
     e.preventDefault();
-    // try {
-    //   const response = await axios.get(
-    //     "http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login",
-
-    //     {
-    //       params: {
-    //         username: username,
-    //         password: password,
-    //         gitgubUsername: githubUsername,
-    //       },
-    //     }
-    //   );
-    //   console.log(response.data);
-    // } catch (err) {
-    //   console.error(err);
-    // }
-    axios
-      .get("http://jobmatch.israelcentral.cloudapp.azure.com:443/api", {
-        proxy: {
-          protocol: "http",
-          host: "brd.superproxy.io",
-          port: 22225,
-          auth: {
-            username: "brd-customer-hl_7cc03ed8-zone-data_center",
-            password: "l0qdl3veibm2",
-          },
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.error(err));
+    fetch(
+      `http://localhost:8000/api/login?academic=${academiclist}&username=${username}&password=${password}&gitgubUsername=${githubUsername}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        alert(data);
+      });
   };
 
   return (
     <div className="login-container">
-      <h2>Student Login</h2>
+      <h2>Student Register To Jobmatch</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="academic">chose Academic</label>
+          <select
+            id="academic"
+            value={academiclist}
+            onChange={handleAcademiclistChange}
+          >
+            <Chose />
+          </select>
+        </div>
+        <div className="form-group">
+          <label htmlFor="username">Username of Academic</label>
           <input
             type="text"
             id="username"
@@ -69,7 +58,7 @@ const LogInStudent = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password Academic </label>
           <input
             type="password"
             id="password"
@@ -78,18 +67,45 @@ const LogInStudent = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="githubUsername">GitHub Username</label>
+          <label htmlFor="gitgubUsername">GitHub Username</label>
           <input
             type="text"
-            id="githubUsername"
+            id="gitgubUsername"
             value={githubUsername}
             onChange={handleGithubUsernameChange}
           />
         </div>
-        <button type="submit">Log In</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );
 };
 
+function Chose() {
+  const list = [
+    {
+      collection: "Choose your Academic",
+    },
+    {
+      collection: "Ben Gurion University",
+    },
+    {
+      collection: "Sapir College",
+    },
+    {
+      collection: "Tel Aviv University",
+    },
+    {
+      collection: "Technion University",
+    },
+    {
+      collection: "Bar Ilan University ",
+    },
+  ];
+  return list.map((colle, index) => (
+    <option key={index} value={colle.collection}>
+      {colle.collection}
+    </option>
+  ));
+}
 export default LogInStudent;
