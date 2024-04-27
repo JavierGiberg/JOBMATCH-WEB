@@ -21,22 +21,38 @@ const LogInStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.get(
-        "http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login",
+    // try {
+    //   const response = await axios.get(
+    //     "http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login",
 
-        {
-          params: {
-            username: username,
-            password: password,
-            gitgubUsername: githubUsername,
+    //     {
+    //       params: {
+    //         username: username,
+    //         password: password,
+    //         gitgubUsername: githubUsername,
+    //       },
+    //     }
+    //   );
+    //   console.log(response.data);
+    // } catch (err) {
+    //   console.error(err);
+    // }
+    axios
+      .get("http://jobmatch.israelcentral.cloudapp.azure.com:8000/api", {
+        proxy: {
+          protocol: "http",
+          host: "brd.superproxy.io",
+          port: 22225,
+          auth: {
+            username: "brd-customer-hl_7cc03ed8-zone-data_center",
+            password: "l0qdl3veibm2",
           },
-        }
-      );
-      console.log(response.data);
-    } catch (err) {
-      console.error(err);
-    }
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
