@@ -38,7 +38,7 @@ const LogInStudent = () => {
     //   console.error(err);
     // }
     axios
-      .get("http://jobmatch.israelcentral.cloudapp.azure.com:8000/api", {
+      .get("http://jobmatch.israelcentral.cloudapp.azure.com:443/api", {
         proxy: {
           protocol: "http",
           host: "brd.superproxy.io",
