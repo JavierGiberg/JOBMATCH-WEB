@@ -5,7 +5,7 @@ const LogInStudent = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
-
+  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
@@ -21,7 +21,7 @@ const LogInStudent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch(
-      `http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login?username=${username}&password=${password}&gitgubUsername=${githubUsername}`
+      `https://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login?username=${username}&password=${password}&gitgubUsername=${githubUsername}`
     )
       .then((res) => res.text())
       .then((data) => {
