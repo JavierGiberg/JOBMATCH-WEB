@@ -26,11 +26,21 @@ const RegisterStudent = () => {
     debugger;
     e.preventDefault();
     fetch(
-      `http://localhost:8000/api/login?academic=${academiclist}&username=${username}&password=${password}&gitgubUsername=${githubUsername}`
+      `http://localhost:8000/api/register?academic=${academiclist}&username=${username}&password=${password}&gitgubUsername=${githubUsername}`
     )
       .then((res) => res.text())
       .then((data) => {
-        alert(data);
+        if (data === "error") {
+          alert("שגיאה בהרשמה");
+          return;
+        }
+        if (data === "success") {
+          alert(
+            "התהליך התחיל. בדקות הקרובות נאסוף מידע ממוסד האקדמאי ומחשבון הגיטהב. בסיום יבנה לך פרופיל ותיהיה חשוף למעסיקים פונטציאלים. המון בהצלחה!!!"
+          );
+        } else {
+          alert("השרת לא זמין כרגע. ");
+        }
       });
   };
 
@@ -40,8 +50,9 @@ const RegisterStudent = () => {
       <h4>
         יש לשים לב לנתונים הנבחרים כדי להשלים את התהליך. התהליך הינו אוטומטי
         וסיסמת של הלימוד אינו נשמר במערכת. בלחיצה על כפתור החיבור אתה מאשר את
-        תנאי השימוש באתר
+        השימוש באתר
       </h4>
+
       <form onSubmit={handleSubmit}>
         <div className="RegisterStudent-form-group">
           <label htmlFor="academic">chose Academic</label>
