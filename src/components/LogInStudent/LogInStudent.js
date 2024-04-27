@@ -20,10 +20,11 @@ const LogInStudent = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // עצור את רענון הדף האוטומטי בשליחת טופס
+    e.preventDefault();
     try {
       const response = await axios.get(
         "http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/login",
+
         {
           params: {
             username: username,
