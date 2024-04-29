@@ -1,4 +1,4 @@
-import React, { useState, Link } from "react";
+import React, { useState } from "react";
 import "./NavBar.css";
 
 function NavBar() {

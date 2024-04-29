@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import "./StudentSemiProfile.css"; // Make sure to create a CSS file with this name
 
 const StudentSemiProfile = (props) => {
