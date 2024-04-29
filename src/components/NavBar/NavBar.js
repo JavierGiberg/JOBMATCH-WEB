@@ -6,8 +6,14 @@ function NavBar() {
   const [icon, setIcon] = useState("nav-toggler");
   const navToggle = () => {
     if (active === "nav-menu") {
+      const elements = document.getElementsByClassName("nav-menu");
+      elements[0].style.display = "block";
       setActive("nav-menu nav-active");
-    } else setActive("nav-menu");
+    } else {
+      const elements = document.getElementsByClassName("nav-menu");
+      elements[0].style.display = "none";
+      setActive("nav-menu");
+    }
 
     if (icon === "nav-toggler") {
       setIcon("nav-toggler toggle");
@@ -17,9 +23,9 @@ function NavBar() {
   return (
     <div>
       <nav className="nav">
-        {/* <img src="./public/logo.png" width="50px" /> */}
+        <img src="./logo.png" width="50px" alt="none" />
         <div className="nav_title">
-          <h1 className="nav-brand">Build</h1>
+          <h1 className="nav-brand">JOBMATCH</h1>
         </div>
         <ul className={active}>
           <li className="nav-item">

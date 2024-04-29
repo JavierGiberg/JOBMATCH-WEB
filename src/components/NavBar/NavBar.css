@@ -1,7 +1,10 @@
 li {
   list-style: none;
 }
-
+a {
+  text-decoration: none;
+  color: rgb(207, 58, 58);
+}
 .logoPic{
   display: flex;
   align-items: center;
@@ -29,6 +32,7 @@ li {
   font-size: 25px;
 }
 .nav-menu {
+  display: block;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -62,6 +66,7 @@ li {
     display: block;
   }
   .nav-menu {
+    display: none;
     position: fixed;
     z-index: 1;
     top: 29vh;
