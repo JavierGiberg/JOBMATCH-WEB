@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   padding: 1rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -77,4 +76,20 @@ button:hover {
     padding: 0.5rem; /* Even smaller padding on the button */
     font-size: 0.8rem; /* Even smaller font size for the button */
   }
+}
+.header {
+  box-shadow: 0 6px 20px  #007bff;
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  font-size: 3rem;
+  
+}
+
+.footer {
+  display: flex;
+  align-content: center;
+  margin-top: 15px;
+  box-shadow: 0 6px 20px  #007bff;
+  -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+  filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
 }

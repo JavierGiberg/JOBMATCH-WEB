@@ -1,0 +1,80 @@
+.student-profile-container {
+    max-width: 100%;
+    margin: auto;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    background-color:#09f;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .student-info h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
+  
+  .student-info p {
+    margin: 5px 0;
+    font-size: 1.2em;
+  }
+  
+  .profile-body {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .profile-body section {
+    margin-bottom: 20px;
+  }
+  
+  .course-record, .language-info {
+    background-color: #e7e7e7;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .course-record span, .language-info span {
+    font-size: 1.1em;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .profile-avatar {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .student-info h1 {
+      font-size: 2em;
+    }
+    
+    .student-info p {
+      font-size: 1em;
+    }
+  }
+  
+  
+.scrollable-content {
+  max-height: 300px; 
+  overflow-y: auto;
+}
