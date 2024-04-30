@@ -37,6 +37,17 @@ const AppPage = () => {
         </p>
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
       </div>
+      <br />
+      <button onClick={testserver}>Test a server</button>
     </div>
   );
+};
+
+const testserver = () => {
+  fetch("http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/register")
+    .then((res) => res.text())
+    .then((data) => {
+      console.log("test server");
+      console.log(data);
+    });
 };

@@ -7,15 +7,15 @@ import Main from "./components/Main/Main";
 function App() {
   return (
     <div className="App">
-      <header className="header">
+      <div className="header">
         <NavBar />
-      </header>
+      </div>
       <br />
       <Main />
       <br />
-      <foooter className="footer">
+      <div className="footer">
         <Footer />
-      </foooter>
+      </div>
     </div>
   );
 }
