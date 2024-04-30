@@ -3,7 +3,7 @@ li {
 }
 a {
   text-decoration: none;
-  color: rgb(207, 58, 58);
+  color: rgb(0, 0, 0);
 }
 .logoPic{
   display: flex;
@@ -69,11 +69,12 @@ a {
     display: none;
     position: fixed;
     z-index: 1;
-    top: 29vh;
+    top: 06vh;
     right: -1.8vh;
-    height: 53vh;
+    height: 40vh;
     width: 40vw;
     background:  #007bff;
+    opacity: none;
     flex-direction: column-reverse ;
     transform: translateX(100%);
     transition: 0.5s ease-in;
