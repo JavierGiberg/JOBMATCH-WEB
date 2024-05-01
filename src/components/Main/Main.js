@@ -44,7 +44,7 @@ const AppPage = () => {
 };
 
 const testserver = () => {
-  fetch("http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/register")
+  fetch("https://jobmatch.israelcentral.cloudapp.azure.com:3443/")
     .then((res) => res.text())
     .then((data) => {
       console.log("test server");
