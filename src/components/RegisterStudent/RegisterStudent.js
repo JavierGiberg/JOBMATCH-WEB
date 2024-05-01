@@ -65,7 +65,7 @@ const RegisterStudent = () => {
     debugger;
     setIsLoading(true);
     fetch(
-      `http://localhost:8000/api/register?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
+      `http://jobmatch.israelcentral.cloudapp.azure.com/api/register?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
     )
       .then((res) => res.text())
       .then((data) => {
@@ -78,7 +78,7 @@ const RegisterStudent = () => {
         debugger;
         if (dataObject.result === "success") {
           fetch(
-            `http://localhost:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
+            `http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
           )
             .then((res1) => res1.text())
             .then((data1) => {

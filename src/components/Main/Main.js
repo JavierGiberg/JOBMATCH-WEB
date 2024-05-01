@@ -38,16 +38,16 @@ const AppPage = () => {
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
       </div>
       <br />
-      <button onClick={testserver}>Test a server</button>
+      {/* <button onClick={testserver}>Test a server</button> */}
     </div>
   );
 };
 
-const testserver = () => {
-  fetch("https://jobmatch.israelcentral.cloudapp.azure.com:3443/")
-    .then((res) => res.text())
-    .then((data) => {
-      console.log("test server");
-      console.log(data);
-    });
-};
+// const testserver = () => {
+//   fetch("https://jobmatch.israelcentral.cloudapp.azure.com:3443/")
+//     .then((res) => res.text())
+//     .then((data) => {
+//       console.log("test server");
+//       console.log(data);
+//     });
+// };
