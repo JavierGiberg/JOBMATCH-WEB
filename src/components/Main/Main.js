@@ -4,6 +4,7 @@ import { UserContext } from "../context/ProdactContex";
 import RegisterStudent from "../RegisterStudent/RegisterStudent";
 import InteractivePoster from "../InteractivePoster/InteractivePoster";
 import NavigateButton from "../NavigateButton/NavigateButton";
+import RegisterApp from "../Register-App/Register-App";
 
 function Main() {
   return (
@@ -13,6 +14,7 @@ function Main() {
           <Routes>
             <Route path="/" element={<AppPage />} />
             <Route path="/StudentRegister" element={<RegisterStudent />} />
+            <Route path="/Register-App" element={<RegisterApp />} />
             <Route path="/InteractivePoster" element={<InteractivePoster />} />
           </Routes>
         </UserContext.Provider>
@@ -38,7 +40,8 @@ const AppPage = () => {
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
       </div>
       <br />
-      {/* <button onClick={testserver}>Test a server</button> */}
+
+      <NavigateButton goTo="/Register-App" button="Register-App" />
     </div>
   );
 };
