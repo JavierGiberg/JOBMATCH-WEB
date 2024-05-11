@@ -62,10 +62,9 @@ const RegisterStudent = () => {
       "התהליך התחיל. בדקה הקרובה נאסוף מידע ממוסד האקדמאי ומחשבון הגיטהב. בסיום יבנה לך פרופיל ותיהיה חשוף למעסיקים פונטציאלים. המון בהצלחה!!!"
     );
     const email = username + mail;
-    debugger;
     setIsLoading(true);
     fetch(
-      `http://jobmatch.israelcentral.cloudapp.azure.com/api/register?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
+      `http://localhost:8000/api/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
     )
       .then((res) => res.text())
       .then((data) => {
@@ -75,21 +74,17 @@ const RegisterStudent = () => {
           alert("שגיאה בהרשמה");
           return;
         }
-        debugger;
         if (dataObject.result === "success") {
           fetch(
-            `http://jobmatch.israelcentral.cloudapp.azure.com:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
+            `http://localhost:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
           )
             .then((res1) => res1.text())
             .then((data1) => {
               const dataObject1 = JSON.parse(data1);
               console.log(dataObject1);
               setStudentData(dataObject1);
-              debugger;
               setSemiProfile(true);
             });
-
-          debugger;
         } else if (dataObject.result === "User already exists") {
           alert("כבר רשום במערכת!!!. ");
         }

@@ -37,6 +37,10 @@ function NavBar() {
           </li>
           <br />
           <li className="nav-item">
+            <a href="/Register-App">App Login</a>
+          </li>
+          <br />
+          <li className="nav-item">
             <a className="nav-link" href="/InteractivePoster">
               Interactive Poster
             </a>
