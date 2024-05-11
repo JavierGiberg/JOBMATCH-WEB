@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "./StudentSemiProfile.css"; // Make sure to create a CSS file with this name
 
 const StudentSemiProfile = (props) => {
-  debugger;
   useEffect(() => {
     if (props.studentData) {
       props.setStudentData(props.studentData);
