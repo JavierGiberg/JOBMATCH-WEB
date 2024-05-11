@@ -50,7 +50,7 @@ const AppPage = () => {
 };
 
 const testserver = () => {
-  fetch("http://jobmatch.israelcentral.cloudapp.azure.com:80/testApi")
+  fetch("https://jobmatch.israelcentral.cloudapp.azure.com:443/testApi")
     .then((res) => res.text())
     .then((data) => {
       console.log("test server");
