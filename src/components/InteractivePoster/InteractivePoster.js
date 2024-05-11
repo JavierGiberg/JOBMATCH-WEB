@@ -1,4 +1,3 @@
-import ReactPlayer from "react-player";
 import React from "react";
 
 const InteractivePoster = () => {
@@ -10,7 +9,6 @@ const InteractivePoster = () => {
       />
       <h1>JOBMATCH</h1>
       <p>This is a demonstration of our interactive poster.</p>
-      {/* <ReactPlayer url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" playing /> */}
     </div>
   );
 };
