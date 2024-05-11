@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.css";
+import NavigateButton from "../NavigateButton/NavigateButton";
 
 function NavBar() {
   const [active, setActive] = useState("nav-menu");
@@ -29,7 +30,7 @@ function NavBar() {
         </div>
         <ul className={active}>
           <li className="nav-item">
-            <a href="/">Home</a>
+            <NavigateButton goTo="/" button="Home" />
           </li>
           <br />
           <li className="nav-item">
