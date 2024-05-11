@@ -5,6 +5,7 @@ import RegisterStudent from "../RegisterStudent/RegisterStudent";
 import InteractivePoster from "../InteractivePoster/InteractivePoster";
 import NavigateButton from "../NavigateButton/NavigateButton";
 import RegisterApp from "../Register-App/Register-App";
+import NavBar from "../NavBar/NavBar";
 
 function Main() {
   return (
@@ -28,6 +29,7 @@ export default Main;
 const AppPage = () => {
   return (
     <div>
+      <NavBar />
       <br />
       <br />
       <div>

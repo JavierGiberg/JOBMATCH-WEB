@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
+import NavBar from "../NavBar/NavBar";
 
 const RegisterApp = () => {
   const [username, setUsername] = useState("");
@@ -40,52 +41,55 @@ const RegisterApp = () => {
       });
   };
   return (
-    <div className="RegisterStudent-login-container">
-      <h1> Register-App </h1>
+    <>
+      <NavBar />
+      <div className="RegisterStudent-login-container">
+        <h1> Register-App </h1>
 
-      <form onSubmit={handleSubmit}>
-        <div className="RegisterStudent-form-group">
-          <label htmlFor="username">Username </label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-        </div>
-        <div className="RegisterStudent-form-group">
-          <label htmlFor="password">Password </label>
-          <input
-            type="password"
-            id="password1"
-            value={password1}
-            onChange={handlePasswordChange1}
-          />
-        </div>
-        <div className="RegisterStudent-form-group">
-          <label htmlFor="password">Confirm Password </label>
-          <input
-            type="password"
-            id="password2"
-            value={password2}
-            onChange={handlePasswordChange2}
-          />
-        </div>
-        <div className="RegisterStudent-form-group">
-          <label htmlFor="email">Email </label>
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={handleEmaildChange}
-          />
-        </div>
-        <br />
-        <button className="RegisterStudent-button" type="submit">
-          Register
-        </button>
-      </form>
-    </div>
+        <form onSubmit={handleSubmit}>
+          <div className="RegisterStudent-form-group">
+            <label htmlFor="username">Username </label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
+          </div>
+          <div className="RegisterStudent-form-group">
+            <label htmlFor="password">Password </label>
+            <input
+              type="password"
+              id="password1"
+              value={password1}
+              onChange={handlePasswordChange1}
+            />
+          </div>
+          <div className="RegisterStudent-form-group">
+            <label htmlFor="password">Confirm Password </label>
+            <input
+              type="password"
+              id="password2"
+              value={password2}
+              onChange={handlePasswordChange2}
+            />
+          </div>
+          <div className="RegisterStudent-form-group">
+            <label htmlFor="email">Email </label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={handleEmaildChange}
+            />
+          </div>
+          <br />
+          <button className="RegisterStudent-button" type="submit">
+            Register
+          </button>
+        </form>
+      </div>
+    </>
   );
 };
 

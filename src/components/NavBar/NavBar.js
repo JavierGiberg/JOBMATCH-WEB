@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import NavigateButton from "../NavigateButton/NavigateButton";
-
 function NavBar() {
   const [active, setActive] = useState("nav-menu");
   const [icon, setIcon] = useState("nav-toggler");
@@ -34,17 +33,18 @@ function NavBar() {
           </li>
           <br />
           <li className="nav-item">
-            <a href="/StudentRegister">Studen Register</a>
+            <NavigateButton goTo="/StudentRegister" button="Studen Register" />
           </li>
           <br />
           <li className="nav-item">
-            <a href="/Register-App">App Login</a>
+            <NavigateButton goTo="/Register-App" button="App Login" />
           </li>
           <br />
           <li className="nav-item">
-            <a className="nav-link" href="/InteractivePoster">
-              Interactive Poster
-            </a>
+            <NavigateButton
+              goTo="/InteractivePoster"
+              button="Interactive Poster"
+            />
           </li>
         </ul>
         <div onClick={navToggle} className={icon}>
