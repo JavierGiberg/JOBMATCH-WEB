@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
-import NavBar from "../NavBar/NavBar";
 
 const RegisterApp = () => {
   const [username, setUsername] = useState("");
@@ -42,18 +41,19 @@ const RegisterApp = () => {
   };
   return (
     <>
-      <NavBar />
+      <br />
+      <br />
       <div className="RegisterStudent-login-container">
         <h1> Register-App </h1>
 
         <form onSubmit={handleSubmit}>
           <div className="RegisterStudent-form-group">
-            <label htmlFor="username">Username </label>
+            <label htmlFor="email">Email </label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={handleUsernameChange}
+              id="email"
+              value={email}
+              onChange={handleEmaildChange}
             />
           </div>
           <div className="RegisterStudent-form-group">
@@ -74,15 +74,7 @@ const RegisterApp = () => {
               onChange={handlePasswordChange2}
             />
           </div>
-          <div className="RegisterStudent-form-group">
-            <label htmlFor="email">Email </label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={handleEmaildChange}
-            />
-          </div>
+
           <br />
           <button className="RegisterStudent-button" type="submit">
             Register

@@ -2,10 +2,9 @@ import "./Main.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserContext } from "../context/ProdactContex";
 import RegisterStudent from "../RegisterStudent/RegisterStudent";
-import InteractivePoster from "../InteractivePoster/InteractivePoster";
 import NavigateButton from "../NavigateButton/NavigateButton";
+import LoginApp from "../Login-APP/Login-App";
 import RegisterApp from "../Register-App/Register-App";
-import NavBar from "../NavBar/NavBar";
 
 function Main() {
   return (
@@ -15,8 +14,8 @@ function Main() {
           <Routes>
             <Route path="/" element={<AppPage />} />
             <Route path="/StudentRegister" element={<RegisterStudent />} />
+            <Route path="/Login-App" element={<LoginApp />} />
             <Route path="/Register-App" element={<RegisterApp />} />
-            <Route path="/InteractivePoster" element={<InteractivePoster />} />
           </Routes>
         </UserContext.Provider>
       </Router>
@@ -29,7 +28,6 @@ export default Main;
 const AppPage = () => {
   return (
     <div>
-      <NavBar />
       <br />
       <br />
       <div>
@@ -44,13 +42,15 @@ const AppPage = () => {
       <br />
 
       <NavigateButton goTo="/Register-App" button="Register-App" />
+      <br />
+      <br />
       <button onClick={testserver}>test server</button>
     </div>
   );
 };
 
 const testserver = () => {
-  fetch("https://jobmatch.israelcentral.cloudapp.azure.com:443/testApi")
+  fetch("https://jobmatch.world/testApi")
     .then((res) => res.text())
     .then((data) => {
       console.log("test server");

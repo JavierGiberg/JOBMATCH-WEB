@@ -29,23 +29,23 @@ function NavBar() {
         </div>
         <ul className={active}>
           <li className="nav-item">
-            <NavigateButton goTo="/" button="Home" />
+            <a href="/" className="nav-link">
+              Home
+            </a>
           </li>
           <br />
           <li className="nav-item">
-            <NavigateButton goTo="/StudentRegister" button="Studen Register" />
+            <a href="/StudentRegister" className="nav-link">
+              Studen Register
+            </a>
           </li>
           <br />
           <li className="nav-item">
-            <NavigateButton goTo="/Register-App" button="App Login" />
+            <a href="/Login-App" className="nav-link">
+              App Login
+            </a>
           </li>
           <br />
-          <li className="nav-item">
-            <NavigateButton
-              goTo="/InteractivePoster"
-              button="Interactive Poster"
-            />
-          </li>
         </ul>
         <div onClick={navToggle} className={icon}>
           <div className="line1"></div>

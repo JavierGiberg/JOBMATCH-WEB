@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./RegisterStudent.css";
 import RegisterSemiprofile from "./StudentSemiProfile";
-import NavBar from "../NavBar/NavBar";
 
 const RegisterStudent = () => {
   const [academiclist, setAcademiclist] = useState("");
@@ -65,7 +64,7 @@ const RegisterStudent = () => {
     const email = username + mail;
     setIsLoading(true);
     fetch(
-      `http://localhost:8000/api/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
+      `https://jobmatch.world/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
     )
       .then((res) => res.text())
       .then((data) => {
@@ -77,7 +76,7 @@ const RegisterStudent = () => {
         }
         if (dataObject.result === "success") {
           fetch(
-            `http://localhost:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
+            `https://jobmatch.world/studentSemiProfile?studentId=${dataObject.studentId}`
           )
             .then((res1) => res1.text())
             .then((data1) => {
@@ -98,7 +97,8 @@ const RegisterStudent = () => {
   if (!semiProfile) {
     return (
       <>
-        <NavBar />
+        <br />
+        <br />
         <div className="RegisterStudent-login-container">
           <h1> Register </h1>
           <h4>
