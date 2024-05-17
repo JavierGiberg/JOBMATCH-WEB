@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
 
 const RegisterApp = () => {
-  const [username, setUsername] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState(""); // *
   const [email, setEmail] = useState(""); // *
-
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
 
   const handlePasswordChange1 = (e) => {
     console.log(e.target.value);
@@ -30,13 +25,11 @@ const RegisterApp = () => {
     }
 
     fetch(
-      `http://jobmatch.israelcentral.cloudapp.azure.com/app-register?username=${username}&password=${password1}&email=${email}`
+      `http://jobmatch.israelcentral.cloudapp.azure.com/app-register?password=${password1}&email=${email}`
     )
       .then((res) => res.text())
       .then((data) => {
-        console.log(
-          `username: ${username} , password: ${password1} , email: ${email}`
-        );
+        console.log(` password: ${password1} , email: ${email}`);
       });
   };
   return (

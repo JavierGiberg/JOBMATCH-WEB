@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
-import NavigateButton from "../NavigateButton/NavigateButton";
 import { useNavigate } from "react-router-dom";
 
 const LoginApp = () => {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(""); // *
   const Navigate = useNavigate();
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
 
   const handlePasswordChange = (e) => {
     console.log(e.target.value);
