@@ -8,7 +8,7 @@ function Footer() {
       <h2>Build footer</h2>
 
       <br />
-      <small>© 2024 | Developed by Javier Giberg & Yarin Akerman </small>
+      <small>© 2024 | Developed by Javier Giberg </small>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./NavBar.css";
-import NavigateButton from "../NavigateButton/NavigateButton";
+
 function NavBar() {
   const [active, setActive] = useState("nav-menu");
   const [icon, setIcon] = useState("nav-toggler");

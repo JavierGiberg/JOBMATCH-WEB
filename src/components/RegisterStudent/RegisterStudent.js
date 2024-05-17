@@ -62,6 +62,7 @@ const RegisterStudent = () => {
       "התהליך התחיל. בדקה הקרובה נאסוף מידע ממוסד האקדמאי ומחשבון הגיטהב. בסיום יבנה לך פרופיל ותיהיה חשוף למעסיקים פונטציאלים. המון בהצלחה!!!"
     );
     const email = username + mail;
+    debugger;
     setIsLoading(true);
     fetch(
       `https://jobmatch.world/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
@@ -74,6 +75,7 @@ const RegisterStudent = () => {
           alert("שגיאה בהרשמה");
           return;
         }
+        debugger;
         if (dataObject.result === "success") {
           fetch(
             `https://jobmatch.world/studentSemiProfile?studentId=${dataObject.studentId}`
@@ -83,8 +85,11 @@ const RegisterStudent = () => {
               const dataObject1 = JSON.parse(data1);
               console.log(dataObject1);
               setStudentData(dataObject1);
+              debugger;
               setSemiProfile(true);
             });
+
+          debugger;
         } else if (dataObject.result === "User already exists") {
           alert("כבר רשום במערכת!!!. ");
         }
