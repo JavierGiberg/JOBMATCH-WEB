@@ -1,5 +1,4 @@
 import "./App.css";
-
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
@@ -10,9 +9,9 @@ function App() {
       <div className="header">
         <NavBar />
       </div>
-      <br />
-      <Main />
-      <br />
+      <div>
+        <Main />
+      </div>
       <div className="footer">
         <Footer />
       </div>
