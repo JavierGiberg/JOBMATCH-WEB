@@ -40,15 +40,7 @@ const AppPage = () => {
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
       </div>
       <br />
-<<<<<<< HEAD
       <button onClick={testserver}>Test a server</button>
-=======
-
-      <NavigateButton goTo="/Register-App" button="Register-App" />
-      <br />
-      <br />
-      <button onClick={testserver}>test server</button>
->>>>>>> 5bc22a28772a6ee2796b839ba44ab4e98fccb58c
     </div>
   );
 };
@@ -59,6 +51,5 @@ const testserver = () => {
     .then((data) => {
       console.log("test server");
       console.log(data);
->>>>>>> 5bc22a28772a6ee2796b839ba44ab4e98fccb58c
     });
 };
