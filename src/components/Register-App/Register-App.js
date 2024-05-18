@@ -3,54 +3,68 @@ import "../RegisterStudent/RegisterStudent.css";
 
 const RegisterApp = () => {
   const [password1, setPassword1] = useState("");
-  const [password2, setPassword2] = useState(""); // *
-  const [email, setEmail] = useState(""); // *
+  const [password2, setPassword2] = useState("");
+  const [email, setEmail] = useState("");
 
   const handlePasswordChange1 = (e) => {
-    console.log(e.target.value);
     setPassword1(e.target.value);
   };
+
   const handlePasswordChange2 = (e) => {
-    console.log(e.target.value);
     setPassword2(e.target.value);
   };
-  const handleEmaildChange = (e) => {
+
+  const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (password1 !== password2) {
       alert("Passwords do not match");
       return;
     }
 
-    fetch(
-      `http://jobmatch.israelcentral.cloudapp.azure.com/app-register?password=${password1}&email=${email}`
-    )
-      .then((res) => res.text())
+    fetch("http://localhost:8000/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password: password1 }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
-        console.log(` password: ${password1} , email: ${email}`);
+        console.log(`email: ${email}, password: ${password1}`);
+        console.log(`from api: ${JSON.stringify(data)}`);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   };
+
   return (
     <>
       <br />
       <br />
       <div className="RegisterStudent-login-container">
-        <h1> Register-App </h1>
-
+        <h1>Register-App</h1>
         <form onSubmit={handleSubmit}>
           <div className="RegisterStudent-form-group">
-            <label htmlFor="email">Email </label>
+            <label htmlFor="email">Email</label>
             <input
               type="text"
               id="email"
               value={email}
-              onChange={handleEmaildChange}
+              onChange={handleEmailChange}
             />
           </div>
           <div className="RegisterStudent-form-group">
-            <label htmlFor="password">Password </label>
+            <label htmlFor="password1">Password</label>
             <input
               type="password"
               id="password1"
@@ -59,7 +73,7 @@ const RegisterApp = () => {
             />
           </div>
           <div className="RegisterStudent-form-group">
-            <label htmlFor="password">Confirm Password </label>
+            <label htmlFor="password2">Confirm Password</label>
             <input
               type="password"
               id="password2"
@@ -67,7 +81,6 @@ const RegisterApp = () => {
               onChange={handlePasswordChange2}
             />
           </div>
-
           <br />
           <button className="RegisterStudent-button" type="submit">
             Register

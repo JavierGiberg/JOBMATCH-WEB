@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
 import { useNavigate } from "react-router-dom";
-
+import PrivateRoute from "./PrivateRoute";
 const LoginApp = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState(""); // *
@@ -15,11 +15,38 @@ const LoginApp = () => {
   const handleEmaildChange = (e) => {
     setEmail(e.target.value);
   };
-  const handleSubmit = (e) => {};
 
-  const handleClick = () => {
+  const handleClickRegister = () => {
     Navigate("/Register-App");
   };
+
+  const handleClickLogIn = () => {
+    fetch("http://localhost:8000/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(`email: ${email}, password: ${password}`);
+        console.log(`from api: ${JSON.stringify(data)}`);
+        localStorage.setItem("token", data.token);
+        console.log("the Token save in local storage!!!");
+        Navigate("/MainApp");
+      })
+
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <>
       <br />
@@ -27,7 +54,7 @@ const LoginApp = () => {
       <div className="RegisterStudent-login-container">
         <h1> LogIn-App </h1>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={PrivateRoute}>
           <div className="RegisterStudent-form-group">
             <label htmlFor="email">Email </label>
             <input
@@ -47,14 +74,18 @@ const LoginApp = () => {
             />
           </div>
 
-          <button className="RegisterStudent-button" type="submit">
+          <button
+            onClick={handleClickLogIn}
+            className="RegisterStudent-button"
+            type="button"
+          >
             LogIn
           </button>
           <br />
           <button
-            onClick={handleClick}
+            onClick={handleClickRegister}
             className="RegisterStudent-button"
-            type="submit"
+            type="button"
           >
             Register
           </button>

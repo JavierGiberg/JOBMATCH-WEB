@@ -5,6 +5,8 @@ import RegisterStudent from "../RegisterStudent/RegisterStudent";
 import NavigateButton from "../NavigateButton/NavigateButton";
 import LoginApp from "../Login-APP/Login-App";
 import RegisterApp from "../Register-App/Register-App";
+import MainApp from "../JOBMATCH-APP/Main-App";
+import PrivateRoute from "../Login-APP/PrivateRoute";
 
 function Main() {
   return (
@@ -15,6 +17,9 @@ function Main() {
             <Route path="/" element={<AppPage />} />
             <Route path="/StudentRegister" element={<RegisterStudent />} />
             <Route path="/Login-App" element={<LoginApp />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/mainApp" element={<MainApp />} />
+            </Route>
             <Route path="/Register-App" element={<RegisterApp />} />
           </Routes>
         </UserContext.Provider>
@@ -46,7 +51,7 @@ const AppPage = () => {
 };
 
 const testserver = () => {
-  fetch("https://jobmatch.world/testApi")
+  fetch("http://localhost:8000/api/testApi")
     .then((res) => res.text())
     .then((data) => {
       console.log("test server");
