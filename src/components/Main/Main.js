@@ -16,13 +16,13 @@ function Main() {
             <Route path="/StudentRegister" element={<RegisterStudent />} />
             <Route path="/Login-App" element={<LoginApp />} />
             <Route path="/Register-App" element={<RegisterApp />} />
+            <Route path="/InteractivePoster" element={<InteractivePoster />} />            
           </Routes>
         </UserContext.Provider>
       </Router>
     </div>
   );
 }
-
 export default Main;
 
 const AppPage = () => {

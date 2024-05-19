@@ -101,7 +101,64 @@ const RegisterStudent = () => {
   };
   if (!semiProfile) {
     return (
-      <>
+      <div className="RegisterStudent-login-container">
+        <h1> Register </h1>
+        <h4>
+          יש לשים לב לנתונים הנבחרים כדי להשלים את התהליך. התהליך הינו אוטומטי
+          וסיסמת של הלימוד אינו נשמר במערכת. בלחיצה על כפתור החיבור אתה מאשר את
+          השימוש באתר
+        </h4>
+        {isLoading ? (
+          <div className="spinner-container">
+            <div className="spinner">
+              <p>JOBMATCH</p>
+              <p>WORK FOR YOU</p>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div className="RegisterStudent-form-group">
+              <label htmlFor="academic">Choose Academic Institute</label>
+              <select
+                id="academic"
+                value={academiclist}
+                onChange={handleAcademiclistChange}
+              >
+                <Chose list={list} />
+              </select>
+            </div>
+            <div className="RegisterStudent-form-group">
+              <label htmlFor="username">Username of Academic Institute</label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
+            </div>
+            <div className="RegisterStudent-form-group">
+              <label htmlFor="password">Password Academic </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div className="RegisterStudent-form-group">
+              <label htmlFor="githubUsername">GitHub Username</label>
+              <input
+                type="text"
+                id="gitgubUsername"
+                value={githubUsername}
+                onChange={handleGithubUsernameChange}
+              />
+            </div>
+            <button className="RegisterStudent-button" type="submit">
+              Join
+            </button>
+          </form>
+        )}
         <br />
         <br />
         <div className="RegisterStudent-login-container">
@@ -164,7 +221,7 @@ const RegisterStudent = () => {
           )}
           <br />
         </div>
-      </>
+      </div>
     );
   } else {
     return (
