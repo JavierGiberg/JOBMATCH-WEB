@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import RankingPro from "./RankingPro";
 import Degree from "./Degree";
 import Major from "./Major";
