@@ -1,0 +1,46 @@
+.dataTable-container {
+    width: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .dataTable-container h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .dataTable-container .rdt_Table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+  }
+  
+  .dataTable-container .rdt_TableHead {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .dataTable-container .rdt_TableHeadRow {
+    border-bottom: 2px solid #ddd;
+  }
+  
+  .dataTable-container .rdt_TableRow {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .dataTable-container .rdt_TableRow:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dataTable-container .rdt_Pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .dataTable-container .rdt_Pagination select {
+    margin-right: 10px;
+  }
+  
