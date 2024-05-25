@@ -65,7 +65,7 @@ const RegisterStudent = () => {
     debugger;
     setIsLoading(true);
     fetch(
-      `https://jobmatch.world/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
+      `http://localhost:8000/api/registerStudents?academic=${academiclist}&username=${username}&password=${password}&githubUsername=${githubUsername}&email=${email}`
     )
       .then((res) => res.text())
       .then((data) => {
@@ -78,7 +78,7 @@ const RegisterStudent = () => {
         debugger;
         if (dataObject.result === "success") {
           fetch(
-            `https://jobmatch.world/studentSemiProfile?studentId=${dataObject.studentId}`
+            `http://localhost:8000/api/studentSemiProfile?studentId=${dataObject.studentId}`
           )
             .then((res1) => res1.text())
             .then((data1) => {

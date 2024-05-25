@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../RegisterStudent/RegisterStudent.css";
+import { useNavigate } from "react-router-dom";
 
 const RegisterApp = () => {
   const [password1, setPassword1] = useState("");
@@ -16,6 +17,11 @@ const RegisterApp = () => {
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+  };
+  const navigate = useNavigate();
+
+  const goToAbout = () => {
+    navigate("/Login-App");
   };
 
   const handleSubmit = (e) => {
@@ -41,6 +47,8 @@ const RegisterApp = () => {
       .then((data) => {
         console.log(`email: ${email}, password: ${password1}`);
         console.log(`from api: ${JSON.stringify(data)}`);
+        alert("Register to JOBMATCH");
+        goToAbout();
       })
       .catch((error) => {
         console.error("Error:", error);
