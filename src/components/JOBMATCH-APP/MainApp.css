@@ -6,10 +6,12 @@
 }
 
 .ranking-section {
-  width: 60%;
+  min-width: 60%;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+  justify-content: space-around;
+ background-color:#007bff;
+
 }
 
 .table-section {
@@ -18,11 +20,10 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -40,3 +41,16 @@ button:hover {
   width: 100%;
   margin-top: 20px;
 }
+.RankingPro-container{
+  display: flex;
+}
+.RankingPro-item1 p{
+  display: flex;
+  flex-direction: column;
+  margin: 0%;
+}
+.RankingPro-item2{
+  display: flex;
+  margin-left: 20px;
+}
+
