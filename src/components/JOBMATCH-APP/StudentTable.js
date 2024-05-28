@@ -1,8 +1,10 @@
 import React from "react";
 import DataTable from "react-data-table-component";
-import "./StudentTable.css";
+import { Box, useTheme } from "@mui/material";
 
 const StudentTable = ({ data }) => {
+  const theme = useTheme();
+
   const columns = [
     {
       name: "Name",
@@ -43,20 +45,20 @@ const StudentTable = ({ data }) => {
       name: "Final Score",
       selector: (row) => row.finScore,
       sortable: true,
-      desc: true,
+      sortFunction: (a, b) => b.finScore - a.finScore,
     },
   ];
 
   return (
-    <div className="dataTable-container">
+    <Box className="dataTable-container" sx={{ marginTop: theme.spacing(2) }}>
       <DataTable
         columns={columns}
         data={data}
         pagination
         defaultSortFieldId="finScore"
-        defaultSortAsc={true}
+        defaultSortAsc={false}
       />
-    </div>
+    </Box>
   );
 };
 

@@ -1,59 +1,71 @@
 import React, { useState } from "react";
-import "./NavBar.css";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  useTheme,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 function NavBar() {
-  const [active, setActive] = useState("nav-menu");
-  const [icon, setIcon] = useState("nav-toggler");
-  const navToggle = () => {
-    if (active === "nav-menu") {
-      const elements = document.getElementsByClassName("nav-menu");
-      elements[0].style.display = "block";
-      setActive("nav-menu nav-active");
-    } else {
-      const elements = document.getElementsByClassName("nav-menu");
-      elements[0].style.display = "none";
-      setActive("nav-menu");
-    }
+  const [anchorEl, setAnchorEl] = useState(null);
+  const theme = useTheme();
 
-    if (icon === "nav-toggler") {
-      setIcon("nav-toggler toggle");
-    } else setIcon("nav-toggler");
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
-    <div>
-      <nav className="nav">
-        <img src="./logo.png" width="50px" alt="none" />
-        <div className="nav_title">
-          <h1 className="nav-brand">JOBMATCH</h1>
-        </div>
-        <ul className={active}>
-          <li className="nav-item">
-            <a href="/" className="nav-link">
+    <AppBar position="static">
+      <Toolbar>
+        <img
+          src="./logo.png"
+          width="50px"
+          alt="none"
+          style={{ marginRight: theme.spacing(2) }}
+        />
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
+          JOBMATCH
+        </Typography>
+        <div>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={handleMenu}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose} component="a" href="/">
               Home
-            </a>
-          </li>
-          <br />
-          <li className="nav-item">
-            <a href="/StudentRegister" className="nav-link">
-              Studen Register
-            </a>
-          </li>
-          <br />
-          <li className="nav-item">
-            <a href="/Login-App" className="nav-link">
+            </MenuItem>
+            <MenuItem
+              onClick={handleClose}
+              component="a"
+              href="/StudentRegister"
+            >
+              Student Register
+            </MenuItem>
+            <MenuItem onClick={handleClose} component="a" href="/Login-App">
               App Login
-            </a>
-          </li>
-          <br />
-        </ul>
-        <div onClick={navToggle} className={icon}>
-          <div className="line1"></div>
-          <div className="line2"></div>
-          <div className="line3"></div>
+            </MenuItem>
+          </Menu>
         </div>
-      </nav>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 }
 

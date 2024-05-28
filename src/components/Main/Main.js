@@ -1,4 +1,4 @@
-import "./Main.css";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserContext } from "../context/ProdactContex";
 import RegisterStudent from "../RegisterStudent/RegisterStudent";
@@ -7,10 +7,16 @@ import LoginApp from "../Login-APP/Login-App";
 import RegisterApp from "../Register-App/Register-App";
 import MainApp from "../JOBMATCH-APP/Main-App";
 import PrivateRoute from "../Login-APP/PrivateRoute";
+import {
+  MainContainer,
+  AppPageContainer,
+  Logo,
+  Button,
+} from "../styles/MainStyles";
 
 function Main() {
   return (
-    <div className="Main">
+    <MainContainer>
       <Router>
         <UserContext.Provider value={{}}>
           <Routes>
@@ -24,7 +30,7 @@ function Main() {
           </Routes>
         </UserContext.Provider>
       </Router>
-    </div>
+    </MainContainer>
   );
 }
 
@@ -32,11 +38,11 @@ export default Main;
 
 const AppPage = () => {
   return (
-    <div>
+    <AppPageContainer>
       <br />
       <br />
       <div>
-        <img src="logo.png" className="App-logo" alt="logo" />
+        <Logo src="logo.png" alt="logo" />
         <p>SOON...</p>
         <p>
           כניסה למאגר: סטודנטים של מדמ"ח ספיר שרוצים לקחת חלק בטסטים וביום
@@ -45,8 +51,8 @@ const AppPage = () => {
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
       </div>
       <br />
-      <button onClick={testserver}>Test a server</button>
-    </div>
+      <Button onClick={testserver}>Test a server</Button>
+    </AppPageContainer>
   );
 };
 
