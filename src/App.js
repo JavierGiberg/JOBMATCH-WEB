@@ -1,21 +1,27 @@
-import "./App.css";
+import React from "react";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
+import {
+  AppContainer,
+  Header,
+  Main as MainStyled,
+  Footer as FooterStyled,
+} from "./AppStyles";
 
 function App() {
   return (
-    <div className="App">
-      <div className="header">
+    <AppContainer>
+      <Header>
         <NavBar />
-      </div>
-      <div>
+      </Header>
+      <MainStyled>
         <Main />
-      </div>
-      <div className="footer">
+      </MainStyled>
+      <FooterStyled>
         <Footer />
-      </div>
-    </div>
+      </FooterStyled>
+    </AppContainer>
   );
 }
 

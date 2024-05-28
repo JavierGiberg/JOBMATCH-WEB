@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { StyledButton } from "../styles/NavigateButtonStyles";
 
 function NavigateButton(props) {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ function NavigateButton(props) {
     navigate(props.goTo);
   };
 
-  return <button onClick={handleClick}>{props.button}</button>;
+  return <StyledButton onClick={handleClick}>{props.button}</StyledButton>;
 }
 
 export default NavigateButton;

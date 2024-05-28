@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import "./LanguagesCheckbox.css";
+import {
+  DropdownButton,
+  DropdownContent,
+} from "../styles/LanguagesCheckboxStyles";
+import { FormControlLabel, Checkbox, FormGroup } from "@mui/material";
 
 const languages = [
   "JavaScript",
@@ -37,28 +41,31 @@ const LanguagesCheckbox = ({ setSelectedLanguages }) => {
   };
 
   return (
-    <div className="dropdown">
-      <button
-        className="dropdown-button"
+    <div>
+      <DropdownButton
+        variant="contained"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         Select Languages
-      </button>
+      </DropdownButton>
       {showDropdown && (
-        <div className="dropdown-content">
-          {languages.map((language) => (
-            <div key={language}>
-              <label>
-                <input
-                  type="checkbox"
-                  value={language}
-                  onChange={() => handleCheckboxChange(language)}
-                />
-                {language}
-              </label>
-            </div>
-          ))}
-        </div>
+        <DropdownContent>
+          <FormGroup>
+            {languages.map((language) => (
+              <FormControlLabel
+                key={language}
+                control={
+                  <Checkbox
+                    checked={selected.includes(language)}
+                    onChange={() => handleCheckboxChange(language)}
+                    name={language}
+                  />
+                }
+                label={language}
+              />
+            ))}
+          </FormGroup>
+        </DropdownContent>
       )}
     </div>
   );

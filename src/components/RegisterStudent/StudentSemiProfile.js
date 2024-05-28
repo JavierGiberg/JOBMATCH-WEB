@@ -1,97 +1,109 @@
 import React, { useEffect } from "react";
-import "./StudentSemiProfile.css"; // Make sure to create a CSS file with this name
+import { Avatar, Box, Typography, Paper } from "@mui/material";
+import {
+  StudentProfileContainer,
+  ProfileHeader,
+  ProfileAvatar,
+  StudentInfo,
+  StudentName,
+  StudentMajor,
+  StudentStatus,
+  ProfileBody,
+  Section,
+  SectionTitle,
+  ScrollableContent,
+  CourseRecord,
+  CourseName,
+  CourseGrade,
+  LanguageInfo,
+  LanguageName,
+  ProjectsCount,
+} from "../styles/StudentSemiProfileStyles";
 
 const StudentSemiProfile = (props) => {
-  debugger;
   useEffect(() => {
     if (props.studentData) {
       props.setStudentData(props.studentData);
     }
-  });
+  }, [props]);
 
   return (
-    <div className="student-profile-container">
-      <div className="profile-header">
-        <img
+    <StudentProfileContainer>
+      <ProfileHeader>
+        <ProfileAvatar
           src={props.studentData.github_info.avatar_url}
           alt={props.studentData.student.name}
-          className="profile-avatar"
         />
-        <div className="student-info">
-          <h1 className="student-name">{props.studentData.student.name}</h1>
-          <p className="student-major">
-            שנה : {props.studentData.student.major}
-          </p>
-          <p className="student-major">
-            {props.studentData.student.degree} : תואר
-          </p>
-          <p className="student-status">
-            {" "}
-            סטטוס : {props.studentData.student.status}{" "}
-          </p>
-        </div>
-      </div>
+        <StudentInfo>
+          <StudentName>{props.studentData.student.name}</StudentName>
+          <StudentMajor>שנה: {props.studentData.student.major}</StudentMajor>
+          <StudentMajor>{props.studentData.student.degree}: תואר</StudentMajor>
+          <StudentStatus>
+            סטטוס: {props.studentData.student.status}
+          </StudentStatus>
+        </StudentInfo>
+      </ProfileHeader>
 
-      <div className="profile-body">
-        <section className="contact-info">
-          <h2>Contact Information</h2>
-          <p>
+      <ProfileBody>
+        <Section>
+          <SectionTitle>Contact Information</SectionTitle>
+          <Typography variant="body1">
             <strong>Email:</strong> {props.studentData.student.email}
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body1">
             <strong>Phone:</strong> {props.studentData.student.phone}
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body1">
             <strong>Address:</strong> {props.studentData.student.address}
-          </p>
-        </section>
+          </Typography>
+        </Section>
 
-        <section className="academic-info">
-          <h2>Academic Record</h2>
-          <div className="scrollable-content">
+        <Section>
+          <SectionTitle>Academic Record</SectionTitle>
+          <ScrollableContent>
             {props.studentData.courses.map((course) => (
-              <div key={course.id} className="course-record">
-                <span className="course-name">{course.course_name}</span>
-                <span className="course-grade">{course.grade}</span>
-              </div>
+              <CourseRecord key={course.id}>
+                <CourseName>{course.course_name}</CourseName>
+                <CourseGrade>{course.grade}</CourseGrade>
+              </CourseRecord>
             ))}
-          </div>
-        </section>
+          </ScrollableContent>
+        </Section>
 
-        <section className="github-info">
-          <h2>GitHub Information</h2>
-          <p>
+        <Section>
+          <SectionTitle>GitHub Information</SectionTitle>
+          <Typography variant="body1">
             <strong>Username:</strong> {props.studentData.github_info.name}
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body1">
             <strong>Followers:</strong>{" "}
             {props.studentData.github_info.followers}
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body1">
             <strong>Following:</strong>{" "}
             {props.studentData.github_info.following}
-          </p>
-          <p>
+          </Typography>
+          <Typography variant="body1">
             <strong>Public Repos:</strong>{" "}
             {props.studentData.github_info.public_repos}
-          </p>
-        </section>
+          </Typography>
+        </Section>
 
-        <section className="programming-languages">
-          <h2>Programming Languages</h2>
-          <div className="scrollable-content">
+        <Section>
+          <SectionTitle>Programming Languages</SectionTitle>
+          <ScrollableContent>
             {props.studentData.github_languages.map((language) => (
-              <div key={language.language} className="language-info">
-                <span className="language-name">{language.language}</span>
-                <span className="projects-count">
+              <LanguageInfo key={language.language}>
+                <LanguageName>{language.language}</LanguageName>
+                <ProjectsCount>
                   {language.projects_count} projects
-                </span>
-              </div>
+                </ProjectsCount>
+              </LanguageInfo>
             ))}
-          </div>
-        </section>
-      </div>
-    </div>
+          </ScrollableContent>
+        </Section>
+      </ProfileBody>
+    </StudentProfileContainer>
   );
 };
 

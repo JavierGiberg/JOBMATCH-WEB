@@ -1,11 +1,23 @@
 import React, { useState } from "react";
-import "../RegisterStudent/RegisterStudent.css";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import {
+  RegisterAppContainer,
+  RegisterAppForm,
+} from "../styles/RegisterAppStyles";
 
 const RegisterApp = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handlePasswordChange1 = (e) => {
     setPassword1(e.target.value);
@@ -18,7 +30,6 @@ const RegisterApp = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-  const navigate = useNavigate();
 
   const goToAbout = () => {
     navigate("/Login-App");
@@ -56,46 +67,43 @@ const RegisterApp = () => {
   };
 
   return (
-    <>
-      <br />
-      <br />
-      <div className="RegisterStudent-login-container">
-        <h1>Register-App</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="RegisterStudent-form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="text"
-              id="email"
-              value={email}
-              onChange={handleEmailChange}
-            />
-          </div>
-          <div className="RegisterStudent-form-group">
-            <label htmlFor="password1">Password</label>
-            <input
-              type="password"
-              id="password1"
-              value={password1}
-              onChange={handlePasswordChange1}
-            />
-          </div>
-          <div className="RegisterStudent-form-group">
-            <label htmlFor="password2">Confirm Password</label>
-            <input
-              type="password"
-              id="password2"
-              value={password2}
-              onChange={handlePasswordChange2}
-            />
-          </div>
-          <br />
-          <button className="RegisterStudent-button" type="submit">
-            Register
-          </button>
-        </form>
-      </div>
-    </>
+    <RegisterAppContainer>
+      <Typography variant="h4" gutterBottom>
+        Register-App
+      </Typography>
+      <RegisterAppForm onSubmit={handleSubmit}>
+        <FormControl fullWidth margin="normal">
+          <InputLabel htmlFor="email">Email</InputLabel>
+          <TextField
+            id="email"
+            type="text"
+            value={email}
+            onChange={handleEmailChange}
+          />
+        </FormControl>
+        <FormControl fullWidth margin="normal">
+          <InputLabel htmlFor="password1">Password</InputLabel>
+          <TextField
+            id="password1"
+            type="password"
+            value={password1}
+            onChange={handlePasswordChange1}
+          />
+        </FormControl>
+        <FormControl fullWidth margin="normal">
+          <InputLabel htmlFor="password2">Confirm Password</InputLabel>
+          <TextField
+            id="password2"
+            type="password"
+            value={password2}
+            onChange={handlePasswordChange2}
+          />
+        </FormControl>
+        <Button variant="contained" color="primary" type="submit">
+          Register
+        </Button>
+      </RegisterAppForm>
+    </RegisterAppContainer>
   );
 };
 
