@@ -1,49 +1,49 @@
 import React from "react";
 import DataTable from "react-data-table-component";
-import "./StudentTable.css"; // ייבוא קובץ ה-CSS
+import "./StudentTable.css";
 
 const StudentTable = ({ data }) => {
   const columns = [
     {
       name: "Name",
       selector: (row) => row.name,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Degree",
       selector: (row) => row.degree,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Major",
       selector: (row) => row.major,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Programming",
       selector: (row) => row.programming,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Algorithm",
       selector: (row) => row.algorithm,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Cyber",
       selector: (row) => row.cyber,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Math",
       selector: (row) => row.math,
-      sortable: true,
+      sortable: false,
     },
     {
       name: "Final Score",
       selector: (row) => row.finScore,
       sortable: true,
-      sortField: "finScore",
+      desc: true,
     },
   ];
 
