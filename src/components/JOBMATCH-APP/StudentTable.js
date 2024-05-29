@@ -1,6 +1,7 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 import { Box, useTheme } from "@mui/material";
+import { positions } from "@mui/system";
 
 const StudentTable = ({ data }) => {
   const theme = useTheme();

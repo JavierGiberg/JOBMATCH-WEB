@@ -40,10 +40,11 @@ function MainApp() {
       rank: index + 1,
     }));
     return {
-      programming: ranking.find((item) => item.id === "programming").rank,
-      algorithm: ranking.find((item) => item.id === "algorithm").rank,
-      cyber: ranking.find((item) => item.id === "cyber").rank,
-      math: ranking.find((item) => item.id === "math").rank,
+      programming: ranking.find((item) => item.id === "programming")?.rank || 0,
+      algorithm: ranking.find((item) => item.id === "algorithm")?.rank || 0,
+      cyber: ranking.find((item) => item.id === "cyber")?.rank || 0,
+      math: ranking.find((item) => item.id === "math")?.rank || 0,
+      order: rankings.length ? rankings.map((item) => item.id) : [], // Capture the order of rankings
     };
   };
 
@@ -51,8 +52,10 @@ function MainApp() {
     const preferences = handleGetRanking();
 
     const url = `http://localhost:8000/api/mainAlgo?degree=${degree}&major=${major}
-    &programming=${preferences.programming}&algorithm=${preferences.algorithm}
-    &cyber=${preferences.cyber}&math=${preferences.math}&languages=${selectedLanguages}`;
+  &programming=${preferences.programming}&algorithm=${preferences.algorithm}
+  &cyber=${preferences.cyber}&math=${preferences.math}&languages=${selectedLanguages.length ? selectedLanguages.join(',') : ''}
+  &order=${preferences.order.length ? preferences.order.join(',') : ''}`;
+
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(url, {
