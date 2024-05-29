@@ -68,6 +68,7 @@ function MainApp() {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
+      data.sort((a, b) => b.finScore - a.finScore);
       setData(data);
     } catch (error) {
       console.error("Error:", error);
