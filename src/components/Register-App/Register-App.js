@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import {
   RegisterAppContainer,
@@ -17,10 +10,17 @@ const RegisterApp = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
   const handlePasswordChange1 = (e) => {
     setPassword1(e.target.value);
+    if (e.target.value.length >= 8) {
+      setPasswordError("");
+    } else {
+      setPasswordError("הסיסמה חייבת להכיל לפחות 8 תווים");
+    }
   };
 
   const handlePasswordChange2 = (e) => {
@@ -28,7 +28,17 @@ const RegisterApp = () => {
   };
 
   const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+    const newEmail = e.target.value;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailRegex.test(newEmail)) {
+      setEmailError("");
+      setEmail(newEmail);
+    } else {
+      setEmailError("כתובת אימייל לא תקינה");
+      setEmail(newEmail); // עדכן בכל מקרה כדי לאפשר למשתמש לראות את ההקלדה
+    }
   };
 
   const goToAbout = () => {
@@ -38,7 +48,17 @@ const RegisterApp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password1 !== password2) {
-      alert("Passwords do not match");
+      alert("הסיסמא אינה תואמת");
+      return;
+    }
+
+    if (emailError) {
+      alert("אנה הכנס מייל תקין");
+      return;
+    }
+
+    if (password1.length < 8) {
+      alert("הסיסמה חייבת להכיל לפחות 8 תווים");
       return;
     }
 
@@ -62,7 +82,7 @@ const RegisterApp = () => {
         goToAbout();
       })
       .catch((error) => {
-        console.error("Error:", error);
+        alert("מייל כבר רשום למערכת");
       });
   };
 
@@ -72,34 +92,41 @@ const RegisterApp = () => {
         Register-App
       </Typography>
       <RegisterAppForm onSubmit={handleSubmit}>
-        <FormControl fullWidth margin="normal">
-          <InputLabel htmlFor="email">Email</InputLabel>
+        <Box mb={2} fullWidth>
           <TextField
             id="email"
+            label="Email"
             type="text"
             value={email}
             onChange={handleEmailChange}
+            error={!!emailError}
+            helperText={emailError}
+            fullWidth
           />
-        </FormControl>
-        <FormControl fullWidth margin="normal">
-          <InputLabel htmlFor="password1">Password</InputLabel>
+        </Box>
+        <Box mb={2} fullWidth>
           <TextField
             id="password1"
+            label="Password"
             type="password"
             value={password1}
             onChange={handlePasswordChange1}
+            error={!!passwordError}
+            helperText={passwordError}
+            fullWidth
           />
-        </FormControl>
-        <FormControl fullWidth margin="normal">
-          <InputLabel htmlFor="password2">Confirm Password</InputLabel>
+        </Box>
+        <Box mb={2} fullWidth>
           <TextField
             id="password2"
+            label="Confirm Password"
             type="password"
             value={password2}
             onChange={handlePasswordChange2}
+            fullWidth
           />
-        </FormControl>
-        <Button variant="contained" color="primary" type="submit">
+        </Box>
+        <Button variant="contained" color="primary" type="submit" fullWidth>
           Register
         </Button>
       </RegisterAppForm>

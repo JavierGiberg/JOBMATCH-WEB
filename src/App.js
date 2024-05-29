@@ -1,13 +1,7 @@
 import React from "react";
 import NavBar from "./components/NavBar/NavBar";
-import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
-import {
-  AppContainer,
-  Header,
-  Main as MainStyled,
-  Footer as FooterStyled,
-} from "./AppStyles";
+import { AppContainer, Header, Main as MainStyled } from "./AppStyles";
 
 function App() {
   return (
@@ -18,9 +12,6 @@ function App() {
       <MainStyled>
         <Main />
       </MainStyled>
-      <FooterStyled>
-        <Footer />
-      </FooterStyled>
     </AppContainer>
   );
 }

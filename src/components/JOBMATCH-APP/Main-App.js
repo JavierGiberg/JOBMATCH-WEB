@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Box, Button, Typography, Container } from "@mui/material";
+import { Grid, Button, Typography, Container } from "@mui/material";
 import RankingPro from "./RankingPro";
 import Degree from "./Degree";
 import Major from "./Major";
@@ -7,7 +7,6 @@ import LanguagesCheckbox from "./LanguagesCheckbox ";
 import StudentTable from "./StudentTable";
 import {
   MainContainer,
-  TableSection,
   ScrollableTableContainer,
 } from "../styles/MainAppStyles";
 
@@ -53,8 +52,10 @@ function MainApp() {
 
     const url = `http://localhost:8000/api/mainAlgo?degree=${degree}&major=${major}
   &programming=${preferences.programming}&algorithm=${preferences.algorithm}
-  &cyber=${preferences.cyber}&math=${preferences.math}&languages=${selectedLanguages.length ? selectedLanguages.join(',') : ''}
-  &order=${preferences.order.length ? preferences.order.join(',') : ''}`;
+  &cyber=${preferences.cyber}&math=${preferences.math}&languages=${
+      selectedLanguages.length ? selectedLanguages.join(",") : ""
+    }
+  &order=${preferences.order.length ? preferences.order.join(",") : ""}`;
 
     const token = localStorage.getItem("token");
     try {
@@ -102,7 +103,7 @@ function MainApp() {
               onClick={getDataTable}
               fullWidth
             >
-              Get Ranking
+              לחץ כאן לקבל למשוך את העשר הסטודנוטים המובילים
             </Button>
           </Grid>
         </Grid>

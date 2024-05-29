@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Box,
   Button as MuiButton,
   FormControl,
   InputLabel,
@@ -47,7 +46,8 @@ const LoginApp = () => {
         navigate("/MainApp");
       })
       .catch((error) => {
-        console.error("Error:", error);
+        alert("אינך רשום למערכת. אתה מועבר לרישום");
+        navigate("/Register-App");
       });
   };
 
