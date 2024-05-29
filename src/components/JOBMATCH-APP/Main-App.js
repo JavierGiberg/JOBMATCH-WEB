@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Box, Button, Typography, Container } from "@mui/material";
+import { Grid, Button, Typography, Container } from "@mui/material";
 import RankingPro from "./RankingPro";
 import Degree from "./Degree";
 import Major from "./Major";
@@ -7,7 +7,6 @@ import LanguagesCheckbox from "./LanguagesCheckbox ";
 import StudentTable from "./StudentTable";
 import {
   MainContainer,
-  TableSection,
   ScrollableTableContainer,
 } from "../styles/MainAppStyles";
 
@@ -40,10 +39,11 @@ function MainApp() {
       rank: index + 1,
     }));
     return {
-      programming: ranking.find((item) => item.id === "programming").rank,
-      algorithm: ranking.find((item) => item.id === "algorithm").rank,
-      cyber: ranking.find((item) => item.id === "cyber").rank,
-      math: ranking.find((item) => item.id === "math").rank,
+      programming: ranking.find((item) => item.id === "programming")?.rank || 0,
+      algorithm: ranking.find((item) => item.id === "algorithm")?.rank || 0,
+      cyber: ranking.find((item) => item.id === "cyber")?.rank || 0,
+      math: ranking.find((item) => item.id === "math")?.rank || 0,
+      order: rankings.length ? rankings.map((item) => item.id) : [], // Capture the order of rankings
     };
   };
 
@@ -51,8 +51,12 @@ function MainApp() {
     const preferences = handleGetRanking();
 
     const url = `http://localhost:8000/api/mainAlgo?degree=${degree}&major=${major}
-    &programming=${preferences.programming}&algorithm=${preferences.algorithm}
-    &cyber=${preferences.cyber}&math=${preferences.math}&languages=${selectedLanguages}`;
+  &programming=${preferences.programming}&algorithm=${preferences.algorithm}
+  &cyber=${preferences.cyber}&math=${preferences.math}&languages=${
+      selectedLanguages.length ? selectedLanguages.join(",") : ""
+    }
+  &order=${preferences.order.length ? preferences.order.join(",") : ""}`;
+
     const token = localStorage.getItem("token");
     try {
       const response = await fetch(url, {
@@ -65,6 +69,7 @@ function MainApp() {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
+      data.sort((a, b) => b.finScore - a.finScore);
       setData(data);
     } catch (error) {
       console.error("Error:", error);
@@ -98,7 +103,7 @@ function MainApp() {
               onClick={getDataTable}
               fullWidth
             >
-              Get Ranking
+              לחץ כאן לקבל למשוך את העשר הסטודנוטים המובילים
             </Button>
           </Grid>
         </Grid>

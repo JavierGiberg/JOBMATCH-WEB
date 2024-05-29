@@ -7,12 +7,10 @@ import LoginApp from "../Login-APP/Login-App";
 import RegisterApp from "../Register-App/Register-App";
 import MainApp from "../JOBMATCH-APP/Main-App";
 import PrivateRoute from "../Login-APP/PrivateRoute";
-import {
-  MainContainer,
-  AppPageContainer,
-  Logo,
-  Button,
-} from "../styles/MainStyles";
+import Footer from "../Footer/Footer";
+import { Footer as FooterStyled } from "../../AppStyles";
+
+import { MainContainer, AppPageContainer, Logo } from "../styles/MainStyles";
 
 function Main() {
   return (
@@ -43,24 +41,20 @@ const AppPage = () => {
       <br />
       <div>
         <Logo src="logo.png" alt="logo" />
-        <p>SOON...</p>
+
         <p>
           כניסה למאגר: סטודנטים של מדמ"ח ספיר שרוצים לקחת חלק בטסטים וביום
           פרויקטים מוזמנים להירשם כאן!{" "}
         </p>
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
+        <p>fכניסה ורישום למאגר המידע עבור מעסיקים</p>
+        <NavigateButton goTo="/Login-App" button="Login-App" />
       </div>
       <br />
-      <Button onClick={testserver}>Test a server</Button>
+
+      <FooterStyled>
+        <Footer />
+      </FooterStyled>
     </AppPageContainer>
   );
-};
-
-const testserver = () => {
-  fetch("http://localhost:8000/api/testApi")
-    .then((res) => res.text())
-    .then((data) => {
-      console.log("test server");
-      console.log(data);
-    });
 };

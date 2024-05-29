@@ -46,7 +46,7 @@ const LanguagesCheckbox = ({ setSelectedLanguages }) => {
         variant="contained"
         onClick={() => setShowDropdown(!showDropdown)}
       >
-        Select Languages
+        לחץ כאן לבחירת שפות תכנות רלוונטיות
       </DropdownButton>
       {showDropdown && (
         <DropdownContent>

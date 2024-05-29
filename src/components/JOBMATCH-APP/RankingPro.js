@@ -58,6 +58,8 @@ const RankingPro = ({ setRankings, handleGetRanking, rankings }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
+      <p>יש לגרור את העדפות לסדר הרצוי</p>
+
       <RankingContainer>
         {rankings.map((item, index) => (
           <DraggableItem
