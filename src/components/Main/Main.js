@@ -37,20 +37,14 @@ export default Main;
 const AppPage = () => {
   return (
     <AppPageContainer>
-      <br />
-      <br />
       <div>
-        <Logo src="logo.png" alt="logo" />
+        <Logo src="mainPic.png" alt="logo" />
 
-        <p>
-          כניסה למאגר: סטודנטים של מדמ"ח ספיר שרוצים לקחת חלק בטסטים וביום
-          פרויקטים מוזמנים להירשם כאן!{" "}
-        </p>
+        <p>כניסה למאגר: עבור סטודנטים </p>
         <NavigateButton goTo="/StudentRegister" button="Student Register" />
-        <p>fכניסה ורישום למאגר המידע עבור מעסיקים</p>
+        <p>כניסה ורישום למאגר המידע עבור מעסיקים</p>
         <NavigateButton goTo="/Login-App" button="Login-App" />
       </div>
-      <br />
 
       <FooterStyled>
         <Footer />

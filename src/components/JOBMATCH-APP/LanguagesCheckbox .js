@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  DropdownButton,
-  DropdownContent,
-} from "../styles/LanguagesCheckboxStyles";
+import { DropdownContent } from "../styles/LanguagesCheckboxStyles";
 import { FormControlLabel, Checkbox, FormGroup } from "@mui/material";
 
 const languages = [
@@ -29,7 +26,6 @@ const languages = [
 ];
 
 const LanguagesCheckbox = ({ setSelectedLanguages }) => {
-  const [showDropdown, setShowDropdown] = useState(false);
   const [selected, setSelected] = useState([]);
 
   const handleCheckboxChange = (language) => {
@@ -42,31 +38,24 @@ const LanguagesCheckbox = ({ setSelectedLanguages }) => {
 
   return (
     <div>
-      <DropdownButton
-        variant="contained"
-        onClick={() => setShowDropdown(!showDropdown)}
-      >
-        לחץ כאן לבחירת שפות תכנות רלוונטיות
-      </DropdownButton>
-      {showDropdown && (
-        <DropdownContent>
-          <FormGroup>
-            {languages.map((language) => (
-              <FormControlLabel
-                key={language}
-                control={
-                  <Checkbox
-                    checked={selected.includes(language)}
-                    onChange={() => handleCheckboxChange(language)}
-                    name={language}
-                  />
-                }
-                label={language}
-              />
-            ))}
-          </FormGroup>
-        </DropdownContent>
-      )}
+      <p>יש לבחור שפות תכנות רלוונטיות</p>
+      <DropdownContent>
+        <FormGroup>
+          {languages.map((language) => (
+            <FormControlLabel
+              key={language}
+              control={
+                <Checkbox
+                  checked={selected.includes(language)}
+                  onChange={() => handleCheckboxChange(language)}
+                  name={language}
+                />
+              }
+              label={language}
+            />
+          ))}
+        </FormGroup>
+      </DropdownContent>
     </div>
   );
 };

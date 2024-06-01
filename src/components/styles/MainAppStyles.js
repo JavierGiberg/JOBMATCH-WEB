@@ -12,7 +12,7 @@ export const TableSection = styled(Box)({
 });
 
 export const ScrollableTableContainer = styled(Box)({
-  maxHeight: "400px",
+  maxHeight: "630px",
   overflowY: "auto",
   marginTop: "16px",
 });

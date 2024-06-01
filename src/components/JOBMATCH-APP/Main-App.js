@@ -97,13 +97,8 @@ function MainApp() {
             <LanguagesCheckbox setSelectedLanguages={setSelectedLanguages} />
           </Grid>
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={getDataTable}
-              fullWidth
-            >
-              לחץ כאן לקבל למשוך את העשר הסטודנוטים המובילים
+            <Button variant="contained" color="primary" onClick={getDataTable}>
+              לחץ כאן לקבל למשוך את הסטודנוטים המובילים
             </Button>
           </Grid>
         </Grid>
