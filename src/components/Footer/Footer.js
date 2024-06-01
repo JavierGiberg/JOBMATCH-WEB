@@ -14,9 +14,7 @@ function Footer() {
         color: "primary.contrastText",
       }}
     >
-      <Typography variant="h6" gutterBottom>
-        Build footer
-      </Typography>
+      <Typography variant="h6" gutterBottom></Typography>
       <Typography variant="body2">
         © 2024 | Developed by Javier Giberg
       </Typography>
