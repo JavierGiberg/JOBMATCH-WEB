@@ -51,22 +51,22 @@ const StudentTable = ({ data }) => {
     {
       name: "Programming",
       selector: (row) => row.programming,
-      sortable: false,
+      sortable: true,
     },
     {
       name: "Algorithm",
       selector: (row) => row.algorithm,
-      sortable: false,
+      sortable: true,
     },
     {
       name: "Cyber",
       selector: (row) => row.cyber,
-      sortable: false,
+      sortable: true,
     },
     {
       name: "Math",
       selector: (row) => row.math,
-      sortable: false,
+      sortable: true,
     },
     {
       name: "Final Score",

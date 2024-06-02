@@ -9,6 +9,7 @@ import {
   MainContainer,
   ScrollableTableContainer,
 } from "../styles/MainAppStyles";
+import Chat from "../chat/Chat";
 
 function MainApp() {
   const initialItems = [
@@ -112,6 +113,7 @@ function MainApp() {
           )}
         </ScrollableTableContainer>
       </MainContainer>
+      <Chat dataTable={data} />
     </Container>
   );
 }
