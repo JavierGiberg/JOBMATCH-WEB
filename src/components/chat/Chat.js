@@ -8,10 +8,15 @@ const Chat = ({ dataTable }) => {
   const ids = [];
 
   const handleSendMessage = async () => {
-    dataTable.forEach((data) => {
-      debugger;
-      ids.push(data.id);
-    });
+    try {
+      dataTable.forEach((data) => {
+        debugger;
+        ids.push(data.id);
+      });
+    } catch (error) {
+      dataTable = 0;
+      console.log("error", error);
+    }
 
     if (newMessage.trim() && user.trim()) {
       try {

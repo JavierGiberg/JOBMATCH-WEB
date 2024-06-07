@@ -16,7 +16,8 @@ function Footer() {
     >
       <Typography variant="h6" gutterBottom></Typography>
       <Typography variant="body2">
-        © 2024 | Developed by Javier Giberg
+        © 2024 | Developed by Javier Giberg & Yarin Akerman. | Dr. Shira Zucker
+        |
       </Typography>
     </Box>
   );
