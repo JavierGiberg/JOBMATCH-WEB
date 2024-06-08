@@ -8,17 +8,19 @@ import {
   DialogTitle,
   Button,
 } from "@mui/material";
-
-const Popup = ({ open, handleClose, rowData }) => {
+import { MainContainer } from "../styles/MainAppStyles";
+import StudentGraph from "./StudentGraph";
+const Popup = ({ open, handleClose, rowData, handleButtonClick }) => {
   const [studentData, setStudentData] = useState({
     student: {},
     courses: [],
     github_info: {},
     github_languages: [],
   });
-
+  const [showStudentGraph, setShowStudentGraph] = useState(false);
+  const [btnStudentGraph, setBtnShowStudentGraph] =
+    useState("הצג סטודנטים דומים");
   useEffect(() => {
-    debugger;
     if (rowData) {
       fetch(
         `http://localhost:8000/api/studentSemiProfile?studentId=${rowData.id}`
@@ -30,9 +32,20 @@ const Popup = ({ open, handleClose, rowData }) => {
     }
   }, [rowData]);
 
+  const handleShowStudentGraph = () => {
+    if (!showStudentGraph) {
+      setShowStudentGraph(true);
+      setBtnShowStudentGraph("הסתר סטודנטים דומים");
+    } else {
+      setShowStudentGraph(false);
+      setBtnShowStudentGraph("הצג סטודנטים דומים");
+    }
+  };
+
   return (
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>JOBMATCH - Profile</DialogTitle>
+
       <DialogContent>
         <DialogContentText>
           {rowData ? (
@@ -45,6 +58,24 @@ const Popup = ({ open, handleClose, rowData }) => {
           )}
         </DialogContentText>
       </DialogContent>
+
+      <MainContainer>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleShowStudentGraph}
+        >
+          {btnStudentGraph}
+        </Button>
+        {showStudentGraph ? (
+          <StudentGraph
+            studentId={rowData.id}
+            numberOfStudents={5}
+            handleClose={handleClose}
+            handleButtonClick={handleButtonClick}
+          />
+        ) : null}
+      </MainContainer>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
           Close

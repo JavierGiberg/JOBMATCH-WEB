@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Avatar, Box, Typography, Paper } from "@mui/material";
+import { Typography } from "@mui/material";
 import {
   StudentProfileContainer,
   ProfileHeader,
