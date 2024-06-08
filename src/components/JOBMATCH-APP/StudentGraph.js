@@ -6,6 +6,7 @@ import {
   ListItem,
   ListItemAvatar,
   ListItemText,
+  Button,
 } from "@mui/material";
 
 const findClosestStudents = (matrix, studentId, numberOfStudents) => {
@@ -31,7 +32,12 @@ const findClosestStudents = (matrix, studentId, numberOfStudents) => {
   return distances.slice(0, numberOfStudents);
 };
 
-const StudentGraph = ({ studentId, numberOfStudents }) => {
+const StudentGraph = ({
+  studentId,
+  numberOfStudents,
+  handleClose,
+  handleButtonClick,
+}) => {
   const [matrix, setMatrix] = useState([]);
   const [closestStudents, setClosestStudents] = useState([]);
 
@@ -51,6 +57,14 @@ const StudentGraph = ({ studentId, numberOfStudents }) => {
     }
   }, [matrix, studentId, numberOfStudents]);
 
+  const test = (student) => {
+    debugger;
+    handleClose();
+    debugger;
+    const rowData = { id: student.id };
+    handleButtonClick(rowData);
+  };
+
   return (
     <div>
       {closestStudents.length > 0 ? (
@@ -61,7 +75,13 @@ const StudentGraph = ({ studentId, numberOfStudents }) => {
                 <Avatar src={student.avatar} alt={student.name} />
               </ListItemAvatar>
               <ListItemText primary={student.name} />
-              <button>הצג פרופיל</button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => test(student)}
+              >
+                see profile
+              </Button>
             </ListItem>
           ))}
         </List>

@@ -85,7 +85,12 @@ const StudentTable = ({ data }) => {
         defaultSortFieldId="finScore"
         defaultSortAsc={false}
       />
-      <Popup open={open} handleClose={handleClose} rowData={selectedRow} />
+      <Popup
+        open={open}
+        handleClose={handleClose}
+        rowData={selectedRow}
+        handleButtonClick={handleButtonClick}
+      />
     </Box>
   );
 };

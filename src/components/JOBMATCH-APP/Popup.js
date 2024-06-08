@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { MainContainer } from "../styles/MainAppStyles";
 import StudentGraph from "./StudentGraph";
-const Popup = ({ open, handleClose, rowData }) => {
+const Popup = ({ open, handleClose, rowData, handleButtonClick }) => {
   const [studentData, setStudentData] = useState({
     student: {},
     courses: [],
@@ -68,7 +68,12 @@ const Popup = ({ open, handleClose, rowData }) => {
           {btnStudentGraph}
         </Button>
         {showStudentGraph ? (
-          <StudentGraph studentId={rowData.id} numberOfStudents={5} />
+          <StudentGraph
+            studentId={rowData.id}
+            numberOfStudents={5}
+            handleClose={handleClose}
+            handleButtonClick={handleButtonClick}
+          />
         ) : null}
       </MainContainer>
       <DialogActions>
