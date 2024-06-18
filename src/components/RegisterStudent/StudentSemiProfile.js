@@ -102,6 +102,22 @@ const StudentSemiProfile = (props) => {
             ))}
           </ScrollableContent>
         </Section>
+
+        <Section>
+          <SectionTitle>Project Counts</SectionTitle>
+          <Typography variant="body1">
+            <strong>Programming:</strong> {props.studentData.projects_count.programming}
+          </Typography>
+          <Typography variant="body1">
+            <strong>Algorithm:</strong> {props.studentData.projects_count.algorithm}
+          </Typography>
+          <Typography variant="body1">
+            <strong>Cyber:</strong> {props.studentData.projects_count.cyber}
+          </Typography>
+          <Typography variant="body1">
+            <strong>Math:</strong> {props.studentData.projects_count.math}
+          </Typography>
+        </Section>
       </ProfileBody>
     </StudentProfileContainer>
   );
